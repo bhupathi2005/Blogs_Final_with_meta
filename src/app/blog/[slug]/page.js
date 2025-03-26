@@ -86,6 +86,7 @@ export default async function BlogPostPage({ params: paramsPromise }) {
         />
       </Head>
       <Navbar />
+      <Navbar />
       <div
         style={{
           backgroundColor: "#f3f4f6",
