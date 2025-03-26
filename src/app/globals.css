@@ -1,5 +1,137 @@
 @import "tailwindcss";
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure WordPress inline styles are respected */
+.wp-content {
+  word-break: break-word;
+}
+
+.wp-content {
+  all: unset; /* Unset all Tailwind overrides */
+}
+
+.wp-content h1,
+.wp-content h2,
+.wp-content h3 {
+  font-weight: bold; /* Preserve boldness */
+}
+
+/* Fix text alignment issues */
+.wp-content p,
+.wp-content div,
+.wp-content span {
+  text-align: inherit !important;
+}
+
+.wp-content [style*="text-align: center"] {
+  text-align: center !important;
+}
+
+.wp-content [style*="text-align: right"] {
+  text-align: right !important;
+}
+
+.wp-content [style*="text-align: justify"] {
+  text-align: justify !important;
+}
+
+.wp-content [style*="text-align: left"] {
+  text-align: left !important;
+}
+
+/* Ensure images are responsive */
+.wp-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+/* Add proper spacing for paragraphs and lists */
+.wp-content p,
+.wp-content li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Ensure headings have sufficient margin */
+.wp-content h1,
+.wp-content h2,
+.wp-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Fix text alignment issues */
+.wp-content {
+  text-align: left;
+  padding: 10px;
+}
+
+/* Ensure bullet points and numbered lists render correctly */
+.wp-content ul,
+.wp-content ol {
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+/* Fix icon spacing */
+.wp-content ul li::before {
+  margin-right: 8px;
+}
+
+/* Table Styling */
+.wp-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.wp-content table th,
+.wp-content table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.wp-content table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.wp-content table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Blockquotes */
+.wp-content blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 4px solid #ccc;
+  font-style: italic;
+  background: #f9f9f9;
+  margin: 1rem 0;
+}
+
+/* Dark mode support */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,10 +149,13 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .wp-content table th {
+    background-color: #222;
+    color: #fff;
+  }
+
+  .wp-content table tr:nth-child(even) {
+    background-color: #333;
+  }
 }

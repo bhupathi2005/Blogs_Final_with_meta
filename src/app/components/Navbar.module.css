@@ -1,0 +1,112 @@
+/* Navbar Container */
+.navbar {
+  background-color: #1053d4;
+  color: #ffffff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container for navigation */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+/* Menu Items */
+.menuItem {
+  color: #bbbdc3;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menuItem:hover {
+  color: #ffffff;
+}
+
+/* Contact Button */
+.contact {
+  color: black;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: #caee5a;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.contact:hover {
+  background-color: #b8d84f;
+  color: #000000;
+}
+
+/* Menu Toggle Button (Hidden by Default) */
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  /* Show menu as a dropdown */
+  .menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    background-color: rgba(49, 68, 84, 0.95);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .menu.active {
+    display: flex; /* Show menu when active */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menuItem {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .contact {
+    font-size: 16px;
+    padding: 10px;
+    background-color: #caee5a;
+    text-align: center;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .menuToggle {
+    display: block; /* Show toggle button */
+  }
+}

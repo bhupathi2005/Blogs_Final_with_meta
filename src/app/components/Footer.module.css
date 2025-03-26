@@ -1,0 +1,73 @@
+.footer {
+  background-color: #1053d4;
+  color: white;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerSection h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footerSection ul li {
+  margin-bottom: 8px;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.footerLink:hover {
+  color: #caee5a;
+}
+
+.footerCompanyName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.footerContactButton {
+  display: inline-block;
+  background-color: #caee5a;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.footerContactButton:hover {
+  background-color: #93b430;
+  transform: scale(1.05);
+}
+
+.footerBottom {
+  border-top: 1px solid white;
+  margin-top: 20px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
