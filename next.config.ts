@@ -8,15 +8,6 @@ const nextConfig = {
       },
     ];
   },
-  async redirects() {
-    return [
-      {
-        source: "/robots.txt",
-        destination: "/public/robots.txt",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 export default nextConfig;
