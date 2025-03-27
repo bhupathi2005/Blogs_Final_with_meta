@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 const SITE_URL = "https://www.700sewagecleaning.com";
 
 const staticPages = [
