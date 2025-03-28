@@ -1,11 +1,45 @@
 import Link from "next/link";
 import he from "he";
 import Navbar from "../components/Navbar";
-
 import Image from "next/image";
 import Footer from "../components/Footer";
 
 // Helper function to extract the first image from content
+export async function generateMetadata() {
+  return {
+    title: "700 Sewage Blogs",
+    description:
+      "Welcome to the 700 Sewage Cleaning Blog, your go-to resource for sewage cleanup tips, drain maintenance advice, and water damage prevention. Our experts share professional insights on tackling sewage backups, clogged drains, odor control, and emergency restoration.",
+    openGraph: {
+      title: "700 Sewage Blog",
+      description: "Stay updated with our latest insights and articles.",
+      url: "https://700sewagecleaning.com/blog",
+      type: "website",
+      images: [
+        {
+          url: "https://700sewagecleaning.com/favicon.io", // Replace with actual OG image URL
+          width: 1200,
+          height: 630,
+          alt: "700 Sew Blogs",
+        },
+      ],
+    },
+    twitter: {
+      card: "700 Sewage Blogs",
+      title: "700 Sewage Blogs",
+      description:
+        "Welcome to the 700 Sewage Cleaning Blog, your go-to resource for sewage cleanup tips, drain maintenance advice, and water damage prevention. Our experts share professional insights on tackling sewage backups, clogged drains, odor control, and emergency restoration.",
+      images: ["https://yourwebsite.com/og-image.jpg"],
+    },
+    // Adding keywords using meta tags
+    metadataBase: new URL("https://700sewagecleaning.com"),
+    other: {
+      keywords:
+        "sewage cleaning, drain maintenance, water damage prevention, clogged drains, odor control, emergency restoration, plumbing tips, sewage backup solutions",
+    },
+  };
+}
+
 function extractImage(content) {
   const match = content.match(/<img[^>]+src="([^"]+)"/);
   return match ? match[1] : null;
