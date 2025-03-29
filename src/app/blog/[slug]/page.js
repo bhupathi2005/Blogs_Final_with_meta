@@ -7,55 +7,6 @@ import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-// Fetch all blog posts
-const extractKeywords = async (postId) => {
-  try {
-    // Fetch the post details
-    const res = await fetch(
-      `https://public-api.wordpress.com/wp/v2/sites/cleaning988.wordpress.com/posts/${postId}`
-    );
-
-    if (!res.ok) {
-      console.error("❌ Error fetching post:", res.status);
-      return "sewage cleaning, drain maintenance, water damage prevention";
-    }
-
-    const post = await res.json();
-
-    // Get tag IDs
-    const tagIds = post.tags;
-
-    if (!tagIds || tagIds.length === 0) {
-      console.warn("⚠️ No tags found, using default keywords.");
-      return "sewage cleaning, drain maintenance, water damage prevention";
-    }
-
-    // Fetch tag names using the IDs
-    const tagsRes = await fetch(
-      `https://public-api.wordpress.com/wp/v2/sites/cleaning988.wordpress.com/tags?include=${tagIds.join(
-        ","
-      )}`
-    );
-
-    if (!tagsRes.ok) {
-      console.error("❌ Error fetching tags:", tagsRes.status);
-      return "sewage cleaning, drain maintenance, water damage prevention";
-    }
-
-    const tags = await tagsRes.json();
-
-    // Process and return keywords
-    const keywords = tags.map((tag) => tag.name.trim()).join(", ");
-    console.log("✅ Processed Keywords:", keywords);
-    return (
-      keywords || "sewage cleaning, drain maintenance, water damage prevention"
-    );
-  } catch (error) {
-    console.error("❌ Error fetching tags:", error);
-    return "sewage cleaning, drain maintenance, water damage prevention";
-  }
-};
-
 export async function generateMetadata({ params: paramsPromise }) {
   const params = await paramsPromise; // Await params if it's a Promise
 
@@ -69,9 +20,6 @@ export async function generateMetadata({ params: paramsPromise }) {
   const post = posts.find((p) => p.slug === slug);
 
   if (!post) return notFound();
-
-  // Fetch Keywords (Tags)
-  const keywords = await extractKeywords(post.id);
 
   // Process Meta Title
   const metaTitle = he.decode(
@@ -110,9 +58,6 @@ export async function generateMetadata({ params: paramsPromise }) {
       images: [image],
     },
     metadataBase: new URL("https://700sewagecleaning.com"),
-    other: {
-      keywords, // Now it works correctly!
-    },
   };
 }
 
