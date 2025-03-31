@@ -58,6 +58,9 @@ export async function generateMetadata({ params: paramsPromise }) {
       images: [image],
     },
     metadataBase: new URL("https://700sewagecleaning.com"),
+      alternates: {
+      canonical: `https://700sewagecleaning.com/blog/${slugifiedTitle}`,
+    },
   };
 }
 
