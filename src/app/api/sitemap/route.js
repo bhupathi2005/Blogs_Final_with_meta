@@ -8,7 +8,7 @@ const staticPages = [
   "/services/sewage-drainage-line-blockage-removal",
   "/services/oil-tank-cleaning",
   "/services/water-tank-cleaning",
-  "/services/pipeline-&-drain-line-cleaning", // Properly encoded "&"
+  "/services/pipeline-&-drain-line-cleaning", // Keep "&"
   "/contact",
   "/blog",
 ];
@@ -16,11 +16,11 @@ const staticPages = [
 function slugify(title) {
   return title
     .toLowerCase()
-    .replace(/&amp;/g, "and")
-    .replace(/&nbsp;/g, "-")
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/--+/g, "-")
+    .replace(/&amp;/g, "and") // Replace encoded "&"
+    .replace(/&nbsp;/g, "-") // Replace non-breaking spaces
+    .replace(/[^\w\s-]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/--+/g, "-") // Remove multiple hyphens
     .trim();
 }
 
@@ -38,14 +38,13 @@ export async function GET() {
     }
 
     const posts = await res.json();
-
     console.log(`✅ Successfully fetched ${posts.length} blog posts.`);
 
     const staticSitemap = staticPages
       .map((page) => {
         return `
   <url>
-    <loc>${SITE_URL}${page}</loc>
+    <loc>${SITE_URL}${page.replace(/&/g, "&amp;")}</loc>  <!-- Encode & -->
     <lastmod>${new Date().toISOString().split("T")[0]}</lastmod> 
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -55,7 +54,7 @@ export async function GET() {
 
     const blogSitemap = posts
       .map((post) => {
-        const postSlug = post.slug || slugify(post.title.rendered);
+        const postSlug = post.slug ? post.slug : slugify(post.title.rendered);
         const lastModDate = post.modified
           ? post.modified.split("T")[0]
           : new Date().toISOString().split("T")[0];
