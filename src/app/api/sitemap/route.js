@@ -8,7 +8,7 @@ const staticPages = [
   "/services/sewage-drainage-line-blockage-removal",
   "/services/oil-tank-cleaning",
   "/services/water-tank-cleaning",
-  "/services/pipeline-%26-drain-line-cleaning", // Properly encoded "&"
+  "/services/pipeline-&-drain-line-cleaning", // Properly encoded "&"
   "/contact",
   "/blog",
 ];
