@@ -27,7 +27,7 @@ export async function generateMetadata({ params: paramsPromise }) {
   );
   console.log("✅ Final Meta Title:", metaTitle);
 
-  const slugifiedTitle = slugify(metaTitle);
+  const slugifiedTitle = slug;
 
   const excerpt = stripTags(
     post.excerpt?.rendered || "Read more about this topic on our blog."
@@ -58,7 +58,7 @@ export async function generateMetadata({ params: paramsPromise }) {
       images: [image],
     },
     metadataBase: new URL("https://www.700sewagecleaning.com"),
-      alternates: {
+    alternates: {
       canonical: `https://www.700sewagecleaning.com/blog/${slugifiedTitle}`,
     },
   };
@@ -266,7 +266,7 @@ export default async function BlogPostPage({ params: paramsPromise }) {
                       >
                         <Link
                           href={`/blog/${
-                            post.slug || slugify(post.title.rendered)
+                            related.slug || slugify(related.title.rendered)
                           }`}
                           style={{
                             color: "#2563eb",
@@ -292,7 +292,7 @@ export default async function BlogPostPage({ params: paramsPromise }) {
                       </div>
                       <Link
                         href={`/blog/${
-                          post.slug || slugify(post.title.rendered)
+                          related.slug || slugify(related.title.rendered)
                         }`}
                         style={{
                           display: "inline-block",
