@@ -33,14 +33,14 @@ export async function generateMetadata({ params: paramsPromise }) {
     post.excerpt?.rendered || "Read more about this topic on our blog."
   );
   const trimmedExcerpt = `${excerpt.substring(0, 100)}...`;
-  const image = post.image || "https://700sewagecleaning.com/favicon.io";
+  const image = post.image || "https://www.700sewagecleaning.com/favicon.io";
 
   return {
     description: trimmedExcerpt,
     openGraph: {
       title: metaTitle,
       description: trimmedExcerpt,
-      url: `https://700sewagecleaning.com/blog/${slugifiedTitle}`,
+      url: `https://www.700sewagecleaning.com/blog/${slugifiedTitle}`,
       type: "article",
       images: [
         {
@@ -57,9 +57,9 @@ export async function generateMetadata({ params: paramsPromise }) {
       description: trimmedExcerpt,
       images: [image],
     },
-    metadataBase: new URL("https://700sewagecleaning.com"),
+    metadataBase: new URL("https://www.700sewagecleaning.com"),
       alternates: {
-      canonical: `https://700sewagecleaning.com/blog/${slugifiedTitle}`,
+      canonical: `https://www.700sewagecleaning.com/blog/${slugifiedTitle}`,
     },
   };
 }
